@@ -2,6 +2,9 @@ console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
 let myCollection = [];
 
+//creates a record object from given parameters (title, artist, yearPublished)
+//adds the new record object to a parameter array
+//returns the added record
 function addToCollection(collection, title, artist, yearPublished){
   let record = {
     title: title,
@@ -14,23 +17,27 @@ function addToCollection(collection, title, artist, yearPublished){
 }
 
 
-console.log(addToCollection(myCollection,'The off-Season','J. Cole','2021'));
-console.log(addToCollection(myCollection,'Cloud Nine', 'Kygo', '2016'));
-console.log(addToCollection(myCollection,'2014 Forest Hills Drive', 'J. Cole', '2014'));
-console.log(addToCollection(myCollection,'Laughter, Tears & Goosebumps', 'Fireboy DML', '2019'));
-console.log(addToCollection(myCollection,'Bahil | Weg', 'Kassmasse', '2022'));
-console.log(addToCollection(myCollection,'Ereft', 'Yohana', '2021'));
-console.log(myCollection);
+console.log('Added', addToCollection(myCollection,'The off-Season','J. Cole','2021'));
+console.log('Added', addToCollection(myCollection,'Cloud Nine', 'Kygo', '2016'));
+console.log('Added', addToCollection(myCollection,'2014 Forest Hills Drive', 'J. Cole', '2014'));
+console.log('Added', addToCollection(myCollection,'Laughter, Tears & Goosebumps', 'Fireboy DML', '2019'));
+console.log('Added', addToCollection(myCollection,'Bahil | Weg', 'Kassmasse', '2022'));
+console.log('Added', addToCollection(myCollection,'Ereft', 'Yohana', '2021'));
+console.log('Records in collection', myCollection);
 
 
+//displays all record objects on log
+function showCollection(collection){
 
-// 'The off-Season' 'J. Cole' '2021'
-// 'Cloud Nine' 'Kygo' '2016'
-// '2014 Forest Hills Drive' 'J. Cole' '2014'
-// 'Laughter, Tears & Goosebumps' 'Fireboy DML' '2019'
-// 'Bahil | Weg' 'Kassmasse' '2022'
-// 'Ereft' 'Yohana' '2021'
+  for (const record of collection){
+    console.log(`${record.title} by ${record.artist}, published in ${record.yearPublished} `);
+  }
 
+}
+
+// `TITLE by ARTIST, published in YEAR`
+
+showCollection(myCollection);
 
 
 
