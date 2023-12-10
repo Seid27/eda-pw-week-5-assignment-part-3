@@ -2,7 +2,8 @@ console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
 let myCollection = [];
 
-//creates a record object from given parameters (title, artist, yearPublished)
+//creates a record object from given parameters
+//takes in array, string, string, string parameters
 //adds the new record object to a parameter array
 //returns the added record
 function addToCollection(collection, title, artist, yearPublished){
@@ -27,6 +28,7 @@ console.log('Records in collection', myCollection);
 
 
 //displays all record objects on log
+//takes in an array
 function showCollection(collection){
 
   for (const record of collection){
@@ -35,10 +37,30 @@ function showCollection(collection){
 
 }
 
-// `TITLE by ARTIST, published in YEAR`
-
 showCollection(myCollection);
 
+// finds albums by artist
+// takes in a collection array, and a string
+function findByArtist(collection, artist){
+  let albums = [];
+
+  for (const record of collection){
+    if (record.artist === artist){
+      albums.push(record);
+    }
+    // console.log(`${record.title} by ${record.artist}, published in ${record.yearPublished} `);
+  }
+
+  return albums;
+
+}
+
+
+//test for Artist found in collection
+console.log('test for Artist found in collection: ', findByArtist(myCollection, 'J. Cole'));
+
+//test for Artist not in Collection
+console.log('test for Artist not in Collection: ', findByArtist(myCollection, 'The Beatles'));
 
 
 
