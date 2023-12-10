@@ -18,12 +18,12 @@ function addToCollection(collection, title, artist, yearPublished){
 }
 
 
-console.log('Added', addToCollection(myCollection,'The off-Season','J. Cole','2021'));
-console.log('Added', addToCollection(myCollection,'Cloud Nine', 'Kygo', '2016'));
-console.log('Added', addToCollection(myCollection,'2014 Forest Hills Drive', 'J. Cole', '2014'));
-console.log('Added', addToCollection(myCollection,'Laughter, Tears & Goosebumps', 'Fireboy DML', '2019'));
-console.log('Added', addToCollection(myCollection,'Bahil | Weg', 'Kassmasse', '2022'));
-console.log('Added', addToCollection(myCollection,'Ereft', 'Yohana', '2021'));
+console.log('Added', addToCollection(myCollection,'The off-Season','J. Cole',2021));
+console.log('Added', addToCollection(myCollection,'Cloud Nine', 'Kygo', 2016));
+console.log('Added', addToCollection(myCollection,'2014 Forest Hills Drive', 'J. Cole', 2014));
+console.log('Added', addToCollection(myCollection,'Laughter, Tears & Goosebumps', 'Fireboy DML', 2019));
+console.log('Added', addToCollection(myCollection,'Bahil | Weg', 'Kassmasse', 2022));
+console.log('Added', addToCollection(myCollection,'Ereft', 'Yohana', 2021));
 console.log('Records in collection', myCollection);
 
 
@@ -48,7 +48,6 @@ function findByArtist(collection, artist){
     if (record.artist === artist){
       albums.push(record);
     }
-    // console.log(`${record.title} by ${record.artist}, published in ${record.yearPublished} `);
   }
 
   return albums;
@@ -62,8 +61,41 @@ console.log('test for Artist found in collection: ', findByArtist(myCollection, 
 //test for Artist not in Collection
 console.log('test for Artist not in Collection: ', findByArtist(myCollection, 'The Beatles'));
 
+//search for album using searchCriteria object parameter
+//returns an array
+function search(collection, searchCriteria){
+  let albums = [];
 
+  if (searchCriteria !== undefined) {
+    if (Object.keys(searchCriteria).length != 0 && searchCriteria.artist !== '') {
+      for (const record of collection) {
+        if (record.artist === searchCriteria.artist &&  (record.yearPublished == searchCriteria.year
+          || record.yearPublished == searchCriteria.yearPublished)){
+          albums.push(record);
+        }
+      }
 
+    } else {
+
+      return collection;
+
+    }
+  } else {
+
+    return collection;
+
+  }
+
+  return albums;
+}
+
+console.log('undefined', search(myCollection));
+console.log('Empty Object', search(myCollection, {}));
+console.log('No artist name provided', search(myCollection, { artist: '', year: 2014 }));
+console.log('Album not in collectiion for that year', search(myCollection, { artist: 'J. Cole', yearPublished: 1999 }));
+console.log('Album not in collection for this artist', search(myCollection, { artist: 'Jay', yearPublished: 2014 }));
+console.log('Album found', search(myCollection, { artist: 'J. Cole', year: 2014 }));
+console.log('Album found', search(myCollection, { artist: 'J. Cole', yearPublished: 2014 }));
 
 
 
